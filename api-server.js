@@ -20,10 +20,16 @@ supertokens.init({
         // learn more about this on https://supertokens.io/docs/thirdpartyemailpassword/appinfo
         appName: "React redux blogger",
         apiDomain: "localhost:3002",
-        websiteDomain: "localhost:3000"
+        websiteDomain: "localhost:3000",
+        websiteBasePath: "/login"
     },
     recipeList: [
         ThirdPartyEmailPassword.init({
+            signUpFeature: {
+                formFields: [{
+                  id: "name"
+                }]
+            },
             providers: [
                 Google({
                     clientSecret: "GOOGLE_CLIENT_SECRET",

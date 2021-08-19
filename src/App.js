@@ -15,7 +15,8 @@ SuperTokens.init({
     appInfo: {
         appName: "react Redux Blogger",
         apiDomain: "localhost:3002",
-        websiteDomain: "localhost:3000"
+        websiteDomain: "localhost:3000",
+        websiteBasePath: "/login"
     },
     recipeList: [
         ThirdPartyEmailPassword.init({
@@ -29,7 +30,14 @@ SuperTokens.init({
                 providers: [
                     Github.init(),
                     Google.init(),
-                ]
+                ],
+                signUpForm: {
+                  formFields: [{
+                      id: "name",
+                      label: "Full name",
+                      placeholder: "First name and last name"
+                  }]
+              }
             },
             palette: {
               background: '#000357',
