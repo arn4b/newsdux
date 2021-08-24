@@ -2,6 +2,7 @@ import './App.css';
 import Homepage from './components/Homepage'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
+import axios from "axios"
 
 
 import React from 'react';
@@ -66,6 +67,10 @@ SuperTokens.init({
       })
   ]
 })
+
+const fetchData = () => {
+  return axios.get("localhost:3002/")
+}
 
 function App() {
   return (

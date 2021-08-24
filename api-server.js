@@ -25,6 +25,42 @@ supertokens.init({
     },
     recipeList: [
         ThirdPartyEmailPassword.init({
+            override: {
+                apis: (originalImplementation) => {
+                    return {
+                        ...originalImplementation,
+                        signInUpPOST: async (input) => {
+                            // First we call the original implementation of signInUpPOST.
+                            let response = await originalImplementation.signInUpPOST(input);
+
+                            // Post sign up response, we check if it was successful
+                            if (response.status === "OK") {
+
+                                let { id, email } = response.user;
+
+                                // Then we check if the user signed up using email / password or a third party login provider.
+                                if (response.type === "thirdparty") {
+                                    // This is the response from the OAuth 2 provider that contains their tokens or user info.
+                                    let thirdPartyAuthCodeResponse = response.authCodeResponse;
+                                    console.log(thirdPartyAuthCodeResponse)
+                                }
+                                if (input.type === "emailpassword") {
+                                    // These are the input form fields values that the user used while signing up / in
+                                    let formFields = input.formFields;
+                                    console.log(formFields)
+                                }
+
+                                if (response.createdNewUser) {
+                                    // TODO: Post sign up logic
+                                } else {
+                                    // TODO: Post sign in logic
+                                }
+                            }
+                            return response;
+                        }
+                    }
+                }
+            },
             signUpFeature: {
                 formFields: [{
                   id: "name"
