@@ -31,7 +31,7 @@ export default function Navbar() {
                     <Typography variant="h6" className={classes.title}>
                         React-Redux Blogger
                     </Typography>
-                    <Button variant="contained">Login</Button>
+                    <Button variant="contained" href="/login">Login</Button>
                 </Toolbar>
             </AppBar>
         </div>

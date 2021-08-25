@@ -1,6 +1,7 @@
 import React from 'react'
 import { signOut } from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 import { useSessionContext } from 'supertokens-auth-react/recipe/session';
+import Button from '@material-ui/core/Button';
 
 
 async function onLogout() {
@@ -20,7 +21,8 @@ export default function Homepage(props) {
                 <h2>Hey <span style={{'color': 'red'}}>{userId}</span></h2>
                 <h1>Redux React Blog</h1>
                 <h4>React redux apllication</h4>
-                <div onClick={onLogout}>Logout</div>
+                {/* <div onClick={onLogout}>Logout</div> */}
+                <Button variant="contained" onClick={onLogout}>LogOut</Button>
             </div>
         </div>
     )

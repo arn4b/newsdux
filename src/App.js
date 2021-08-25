@@ -38,7 +38,19 @@ SuperTokens.init({
                       label: "Full name",
                       placeholder: "First name and last name"
                   }]
-              }
+              },
+              style: {
+                  container: {
+                    background: "linear-gradient(135deg, rgba(0,0,0,1) 10%, rgba(255,141,0,1) 100%)",
+                    marginTop: "4rem",
+                  },
+                  secondaryText: {
+                    fontSize: "1rem",
+                  },
+                  link: {
+                    fontSize: "1rem",
+                  }
+            }
             },
             palette: {
               background: '#000357',
@@ -47,7 +59,7 @@ SuperTokens.init({
               textLabel: "white",
               textInput: '#a9a9a9',
               textPrimary: "white",
-              textLink: '#a9a9a9'
+              textLink: '#ff9b33'
           }
         }),
         Session.init()
