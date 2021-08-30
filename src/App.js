@@ -11,6 +11,7 @@ import {  BrowserRouter as Router,  Switch,  Route,  Link} from "react-router-do
 import SuperTokens, { getSuperTokensRoutesForReactRouterDom } from "supertokens-auth-react";
 import ThirdPartyEmailPassword, {Github, Google, ThirdPartyEmailPasswordAuth} from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 import Session from "supertokens-auth-react/recipe/session";
+import Landing from './components/Landing';
 
 SuperTokens.init({
     appInfo: {
@@ -25,6 +26,13 @@ SuperTokens.init({
             if (context.action === "SIGN_IN_AND_UP") {
                 return "/login";
               };
+              if (context.action === "SUCCESS") {
+                if (context.redirectToPath !== undefined) {
+                    // we are navigating back to where the user was before they authenticated
+                    return context.redirectToPath;
+                }
+                return "/home";
+            }
           },
             signInAndUpFeature: {
               disableDefaultImplementation: true,
@@ -57,7 +65,7 @@ SuperTokens.init({
               error: '#ad2e2e',
               textTitle: "white",
               textLabel: "white",
-              textInput: '#a9a9a9',
+              textInput: '#000',
               textPrimary: "white",
               textLink: '#ff9b33'
           }
@@ -65,20 +73,6 @@ SuperTokens.init({
         Session.init()
     ]
 });
-
-SuperTokens.init({
-  recipeList: [
-      ThirdPartyEmailPassword.init({
-
-          // The user will be taken to the custom path when then need to login.
-          getRedirectionURL: async (context) => {
-              if (context.action === "SIGN_IN_AND_UP") {
-                  return "/login";
-              };
-          }
-      })
-  ]
-})
 
 const fetchData = () => {
   return axios.get("localhost:3002/")
@@ -88,13 +82,19 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Navbar />
+        <Navbar />
         <Switch>
           {getSuperTokensRoutesForReactRouterDom(require("react-router-dom"))}
+
+            <Route path="/" exact>
+              <Landing />
+            </Route>
+
             <Route path="/login">
               <Login />
             </Route>
-            <Route path="/">
+
+            <Route path="/home">
                 <ThirdPartyEmailPasswordAuth>
                   <Homepage />                  
                 </ThirdPartyEmailPasswordAuth>
