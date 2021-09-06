@@ -3,7 +3,8 @@ import Homepage from './components/Homepage'
 import Login from './components/Login'
 import Navbar from './components/Navbar'
 import axios from "axios"
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 import React from 'react';
 import {  BrowserRouter as Router,  Switch,  Route,  Link} from "react-router-dom";
@@ -28,7 +29,6 @@ SuperTokens.init({
               };
               if (context.action === "SUCCESS") {
                 if (context.redirectToPath !== undefined) {
-                    // we are navigating back to where the user was before they authenticated
                     return context.redirectToPath;
                 }
                 return "/home";
@@ -79,10 +79,17 @@ const fetchData = () => {
 }
 
 function App() {
+
+  const notify = () => toast("Wow so easy !", {
+    position: toast.POSITION.BOTTOM_LEFT
+  });
+
   return (
     <div className="App">
       <Router>
         <Navbar />
+        {/* <button onClick={notify}>Notify !</button> */}
+        <ToastContainer />
         <Switch>
           {getSuperTokensRoutesForReactRouterDom(require("react-router-dom"))}
 

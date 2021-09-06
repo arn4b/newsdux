@@ -68,8 +68,8 @@ supertokens.init({
             },
             providers: [
                 Google({
-                    clientSecret: "GOOGLE_CLIENT_SECRET",
-                    clientId: "GOOGLE_CLIENT_ID"
+                    clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+                    clientId: process.env.GOOGLE_CLIENT_ID
                 }),
                 Github({
                     clientSecret: process.env.GITHUB_CLIENT_SECRET,

@@ -6,11 +6,11 @@ export default function Login() {
     return (
         <div>
             <Grid container>
-                <Grid item xs={12} sm={6}>
+                <Grid item xs={12} sm={4}>
                     <SignInAndUp />
                 </Grid>
-                <Grid item xs={12} sm={6}>
-                    <img src="https://www.fansarmy.in/uploads/fans-army/products/untitled-design---2020-12-03t001755499-946370_l.jpg" width="100%" />
+                <Grid item xs={12} sm={8}>
+                    <img src="https://www.dailydot.com/wp-content/uploads/2018/10/olli-the-polite-cat.jpg" height="100%" width="100%" />
                 </Grid>
             </Grid>
         </div>
