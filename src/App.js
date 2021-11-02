@@ -13,6 +13,9 @@ import SuperTokens, { getSuperTokensRoutesForReactRouterDom } from "supertokens-
 import ThirdPartyEmailPassword, {Github, Google, ThirdPartyEmailPasswordAuth} from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 import Session from "supertokens-auth-react/recipe/session";
 import Landing from './components/Landing';
+import { useSelector } from 'react-redux';
+import { selectSignedin } from './features/userSlice';
+import News from './components/News';
 
 SuperTokens.init({
     appInfo: {
@@ -80,6 +83,8 @@ const fetchData = () => {
 
 function App() {
 
+  const isSignedin = useSelector(selectSignedin)
+
   const notify = () => toast("Wow so easy !", {
     position: toast.POSITION.BOTTOM_LEFT
   });
@@ -103,7 +108,9 @@ function App() {
 
             <Route path="/home">
                 <ThirdPartyEmailPasswordAuth>
-                  <Homepage />                  
+                  <Homepage />  
+
+                  {isSignedin && <News />} 
                 </ThirdPartyEmailPasswordAuth>
             </Route>
         </Switch>

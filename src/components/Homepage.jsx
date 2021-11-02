@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { selectSignedin, setSignedIn, setUserData } from '../features/userSlice';
+import News from './News';
 
 async function onLogout() {
 

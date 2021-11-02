@@ -10,7 +10,7 @@ import { TextField } from '@material-ui/core';
 
 import { useDispatch, useSelector } from 'react-redux';
 
-import { selectSignedin, selectUserData, setUserData, setSignedIn, setInput } from '../features/userSlice';
+import { selectSignedin, selectUserData, setUserData, setSignedIn, setSearchInput } from '../features/userSlice';
 
 import { signOut } from "supertokens-auth-react/recipe/thirdpartyemailpassword";
 
@@ -43,12 +43,30 @@ export default function Navbar() {
 
   const dispatch = useDispatch()
 
+  function handleSearch() {
+    dispatch(setSearchInput(inputValue))
+  }
+
   const classes = useStyles();
   return (
     <div>
       <AppBar position="static">
         <Toolbar>
-          <TextField id="outlined-basic" label="Search" variant="outlined" />
+          {
+            isSignedIn
+
+              ?
+              <>
+                <TextField id="outlined-basic" label="Search" variant="outlined" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+
+                <Button variant="contained" onClick={handleSearch}>Search</Button>
+              </>
+
+
+              :
+
+              <></>
+          }
           <Typography variant="h6" className={classes.title}>
             React-Redux Blogger
           </Typography>
