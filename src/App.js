@@ -21,7 +21,7 @@ SuperTokens.init({
     appInfo: {
         appName: "NewsDux",
         apiDomain: "https://newsdux-backend.herokuapp.com/",
-        websiteDomain: "localhost:3000",
+        websiteDomain: "https://newsdux.pages.dev",
         websiteBasePath: "/login"
     },
     recipeList: [
