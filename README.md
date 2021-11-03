@@ -1,11 +1,5 @@
 # React Redux Blogger
 
-Auth🔐 by Supertokens
-
-React⚛
-
-Redux🦚
-
-NodeJS👽
+### ⚛ React || 🦚 Redux and Redux-Toolkit || 🔐 Auth by Supertokens || 👽 NodeJS || 📰 GNews API || 💙 MaterialUI
 
 
