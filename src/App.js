@@ -17,6 +17,7 @@ import { useSelector } from 'react-redux';
 import { selectSignedin } from './features/userSlice';
 import News from './components/News';
 
+
 SuperTokens.init({
     appInfo: {
         appName: "NewsDux",
