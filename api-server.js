@@ -18,7 +18,7 @@ supertokens.init({
     },
     appInfo: {
         // learn more about this on https://supertokens.io/docs/thirdpartyemailpassword/appinfo
-        appName: "React redux blogger",
+        appName: "NewsDux",
         apiDomain: "localhost:3002",
         websiteDomain: "localhost:3000",
         websiteBasePath: "/login"

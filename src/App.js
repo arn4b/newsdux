@@ -19,8 +19,8 @@ import News from './components/News';
 
 SuperTokens.init({
     appInfo: {
-        appName: "react Redux Blogger",
-        apiDomain: "localhost:3002",
+        appName: "NewsDux",
+        apiDomain: "https://newsdux-backend.herokuapp.com/",
         websiteDomain: "localhost:3000",
         websiteBasePath: "/login"
     },
@@ -78,7 +78,7 @@ SuperTokens.init({
 });
 
 const fetchData = () => {
-  return axios.get("localhost:3002/")
+  return axios.get("https://newsdux-backend.herokuapp.com/")
 }
 
 function App() {
