@@ -1,7 +1,9 @@
-import React, {useState, useEffect} from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useSelector, useDispatch } from 'react-redux'
 import { selectSearchInput, setBlogData } from '../features/userSlice'
+
+import { Box, Grid } from '@material-ui/core';
 
 export default function News() {
 
@@ -15,33 +17,35 @@ export default function News() {
 
     useEffect(() => {
         axios
-        .get(blog_url)
-        .then((response) => {
-            dispatch(setBlogData(response.data))
-            setNews(response.data)
-            console.log(response.data)
-            setLoading(false)
-        })
-        .catch((error) => {
-            console.log(error)
-        })
+            .get(blog_url)
+            .then((response) => {
+                dispatch(setBlogData(response.data))
+                setNews(response.data)
+                console.log(response.data)
+                setLoading(false)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     }, [searchInput])
 
     return (
         <div>
-            <h1>news</h1>
+            <h1>NewsDux</h1>
             {loading ? <h1>Loading...</h1> : ""}
-            <div className="news-div">
+            <div className="blogs">
                 {news?.articles?.map(news => (
-                    <a target="__blank" href={news.url}>
-                        <img src={news.image} />
+                    <a className="blog" target="__blank" href={news.url}>
                         <div>
-                            <h3>
-                                <span>{news.source.name}</span>
-                                <span>{news.publishedAt}</span>
-                            </h3>
-                            <h1>{news.title}</h1>
-                            <p>{news.description}</p>
+                            <img src={news.image} />
+                            <div>
+                                <h3 className="sourceName">
+                                    <span>{news.source.name}</span>
+                                    <span>{news.publishedAt}</span>
+                                </h3>
+                                <h1>{news.title}</h1>
+                                <p>{news.description}</p>
+                            </div>
                         </div>
                     </a>
                 ))}

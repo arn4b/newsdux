@@ -54,21 +54,17 @@ export default function Navbar() {
         <Toolbar>
           {
             isSignedIn
-
               ?
               <>
-                <TextField id="outlined-basic" label="Search" variant="outlined" value={inputValue} onChange={(e) => setInputValue(e.target.value)} />
+                <TextField  id="outlined-basic" label="Search" variant="filled" value={inputValue} onChange={(e) => setInputValue(e.target.value)} size="small" color="success"/>
 
-                <Button variant="contained" onClick={handleSearch}>Search</Button>
+                <Button variant="contained" onClick={handleSearch} style={{'margin':'0 1rem'}}>Search</Button>
               </>
-
-
               :
-
               <></>
           }
           <Typography variant="h6" className={classes.title}>
-            React-Redux Blogger
+            NewsDux
           </Typography>
           {
             isSignedIn
